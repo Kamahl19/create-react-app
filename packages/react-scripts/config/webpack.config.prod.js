@@ -146,7 +146,7 @@ module.exports = {
           /\.html$/,
           /\.(js|jsx)$/,
           /\.css$/,
-          /\.(scss|sass)/,
+          /\.(scss|sass)$/,
           /\.json$/,
           /\.svg$/
         ],
@@ -214,8 +214,38 @@ module.exports = {
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
       {
-        test: /(\.scss|\.sass)$/,
-        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
+        test: /\.(scss|sass)$/,
+        loader: ExtractTextPlugin.extract(Object.assign({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            }, {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+                plugins: function () {
+                  return [
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 9', // React doesn't support IE8 anyway
+                      ]
+                    })
+                  ]
+                }
+              }
+            }, {
+              loader: 'sass-loader',
+            }
+          ]
+        }, extractTextPluginOptions))
+        // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
       // "file" loader for svg
       {

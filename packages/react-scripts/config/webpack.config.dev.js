@@ -139,7 +139,7 @@ module.exports = {
           /\.html$/,
           /\.(js|jsx)$/,
           /\.css$/,
-          /\.(scss|sass)/,
+          /\.(scss|sass)$/,
           /\.json$/,
           /\.svg$/
         ],
@@ -200,8 +200,34 @@ module.exports = {
         ]
       },
       {
-        test: /(\.scss|\.sass)$/,
-        loader: 'style!css!postcss!sass'
+        test: /\.(scss|sass)$/,
+        use: [
+          'style-loader', {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+              plugins: function () {
+                return [
+                  autoprefixer({
+                    browsers: [
+                      '>1%',
+                      'last 4 versions',
+                      'Firefox ESR',
+                      'not ie < 9', // React doesn't support IE8 anyway
+                    ]
+                  })
+                ]
+              }
+            }
+          }, {
+            loader: 'sass-loader',
+          }
+        ]
       },
       // "file" loader for svg
       {
