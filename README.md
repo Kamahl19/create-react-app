@@ -5,7 +5,7 @@ Create React apps with no build configuration.
 * [Getting Started](#getting-started) – How to create a new app.
 * [User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md) – How to develop apps bootstrapped with Create React App.
 
-Create React App works on MacOS, Windows, and Linux.  
+Create React App works on macOS, Windows, and Linux.  
 If something doesn’t work please [file an issue](https://github.com/facebookincubator/create-react-app/issues/new).
 
 ## tl;dr
@@ -214,7 +214,7 @@ If you don’t agree with the choices made in this project, you might want to ex
 Some of the more popular and actively maintained ones are:
 
 * [insin/nwb](https://github.com/insin/nwb)
-* [mozilla/neo](https://github.com/mozilla/neo)
+* [mozilla-neutrino/neutrino-dev](https://github.com/mozilla-neutrino/neutrino-dev)
 * [NYTimes/kyt](https://github.com/NYTimes/kyt)
 * [zeit/next.js](https://github.com/zeit/next.js)
 * [gatsbyjs/gatsby](https://github.com/gatsbyjs/gatsby)
