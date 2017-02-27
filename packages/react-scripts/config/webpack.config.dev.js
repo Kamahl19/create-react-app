@@ -159,13 +159,16 @@ module.exports = {
           // @remove-on-eject-begin
           babelrc: false,
           presets: [require.resolve('babel-preset-react-app')],
-          plugins: [require.resolve('babel-plugin-transform-decorators-legacy')],
+          plugins: [
+            require.resolve('babel-plugin-transform-decorators-legacy'),
+            ['import', [{ libraryName: "antd", style: 'css' }]],
+          ],
           // @remove-on-eject-end
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.
           cacheDirectory: true
-        }
+        },
       },
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
