@@ -8,8 +8,10 @@ Please refer to its documentation:
 
 ## Custom Changes to fork
 
-* SASS preprocessors
+* SASS preprocessor
+* LESS preprocessor
 * decorators
+* babel-plugin-import for Ant.Design
 * @src alias for /src folder
 ```javascript
 import { Button } from '@src/components';
