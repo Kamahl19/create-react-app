@@ -165,7 +165,10 @@ module.exports = {
         options: {
           babelrc: false,
           presets: [require.resolve('babel-preset-react-app')],
-          plugins: [require.resolve('babel-plugin-transform-decorators-legacy')],
+          plugins: [
+            require.resolve('babel-plugin-transform-decorators-legacy'),
+            ['import', [{ libraryName: "antd", style: 'css' }]],
+          ],
         },
         // @remove-on-eject-end
       },
