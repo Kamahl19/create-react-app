@@ -176,7 +176,7 @@ module.exports = {
           babelrc: false,
           presets: [require.resolve('babel-preset-react-app')],
           plugins: [
-            ['import', [{ libraryName: "antd", style: 'css' }]],
+            ['import', [{ libraryName: 'antd', style: 'css' }]],
             require.resolve('babel-plugin-transform-decorators-legacy'),
           ],
           // @remove-on-eject-end
@@ -222,71 +222,61 @@ module.exports = {
       {
         test: /\.(scss|sass)$/,
         use: [
-          'style-loader', {
+          'style-loader',
+          {
             loader: 'css-loader',
             options: {
-              importLoaders: 1
-            }
-          }, {
+              importLoaders: 1,
+            },
+          },
+          {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-              plugins: function () {
-                return [
-                  autoprefixer({
-                    browsers: [
-                      '>1%',
-                      'last 4 versions',
-                      'Firefox ESR',
-                      'not ie < 9', // React doesn't support IE8 anyway
-                    ]
-                  })
-                ]
-              }
-            }
-          }, {
-            loader: 'sass-loader',
-          }
-        ]
+              plugins: () => [
+                autoprefixer({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9', // React doesn't support IE8 anyway
+                  ],
+                }),
+              ],
+            },
+          },
+          'sass-loader',
+        ],
       },
       {
         test: /\.less$/,
         use: [
-          'style-loader', {
+          'style-loader',
+          {
             loader: 'css-loader',
             options: {
-              importLoaders: 1
-            }
-          }, {
+              importLoaders: 1,
+            },
+          },
+          {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-              plugins: function () {
-                return [
-                  autoprefixer({
-                    browsers: [
-                      '>1%',
-                      'last 4 versions',
-                      'Firefox ESR',
-                      'not ie < 9', // React doesn't support IE8 anyway
-                    ]
-                  })
-                ]
-              }
-            }
-          }, {
-            loader: 'less-loader',
-          }
-        ]
+              plugins: () => [
+                autoprefixer({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9', // React doesn't support IE8 anyway
+                  ],
+                }),
+              ],
+            },
+          },
+          'less-loader',
+        ],
       },
-      // "file" loader for svg
-      {
-        test: /\.svg$/,
-        loader: 'file-loader',
-        options: {
-          name: 'static/media/[name].[hash:8].[ext]'
-        }
-      }
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "url" loader exclusion list.
     ],

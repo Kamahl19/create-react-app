@@ -175,7 +175,7 @@ module.exports = {
           babelrc: false,
           presets: [require.resolve('babel-preset-react-app')],
           plugins: [
-            ['import', [{ libraryName: "antd", style: 'css' }]],
+            ['import', [{ libraryName: 'antd', style: 'css' }]],
             require.resolve('babel-plugin-transform-decorators-legacy'),
           ],
         },
@@ -231,80 +231,78 @@ module.exports = {
       },
       {
         test: /\.(scss|sass)$/,
-        loader: ExtractTextPlugin.extract(Object.assign({
-          fallback: 'style-loader',
-          use: [
+        loader: ExtractTextPlugin.extract(
+          Object.assign(
             {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1
-              }
-            }, {
-              loader: 'postcss-loader',
-              options: {
-                ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-                plugins: function () {
-                  return [
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ]
-                    })
-                  ]
-                }
-              }
-            }, {
-              loader: 'sass-loader',
-            }
-          ]
-        }, extractTextPluginOptions))
+              fallback: 'style-loader',
+              use: [
+                {
+                  loader: 'css-loader',
+                  options: {
+                    importLoaders: 1,
+                  },
+                },
+                {
+                  loader: 'postcss-loader',
+                  options: {
+                    ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+                    plugins: () => [
+                      autoprefixer({
+                        browsers: [
+                          '>1%',
+                          'last 4 versions',
+                          'Firefox ESR',
+                          'not ie < 9', // React doesn't support IE8 anyway
+                        ],
+                      }),
+                    ],
+                  },
+                },
+                'sass-loader',
+              ],
+            },
+            extractTextPluginOptions
+          )
+        ),
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
       {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract(Object.assign({
-          fallback: 'style-loader',
-          use: [
+        loader: ExtractTextPlugin.extract(
+          Object.assign(
             {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1
-              }
-            }, {
-              loader: 'postcss-loader',
-              options: {
-                ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-                plugins: function () {
-                  return [
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ]
-                    })
-                  ]
-                }
-              }
-            }, {
-              loader: 'less-loader',
-            }
-          ]
-        }, extractTextPluginOptions))
+              fallback: 'style-loader',
+              use: [
+                {
+                  loader: 'css-loader',
+                  options: {
+                    importLoaders: 1,
+                  },
+                },
+                {
+                  loader: 'postcss-loader',
+                  options: {
+                    ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+                    plugins: () => [
+                      autoprefixer({
+                        browsers: [
+                          '>1%',
+                          'last 4 versions',
+                          'Firefox ESR',
+                          'not ie < 9', // React doesn't support IE8 anyway
+                        ],
+                      }),
+                    ],
+                  },
+                },
+                'less-loader',
+              ],
+            },
+            extractTextPluginOptions
+          )
+        ),
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
-      // "file" loader for svg
-      {
-        test: /\.svg$/,
-        loader: 'file-loader',
-        options: {
-          name: 'static/media/[name].[hash:8].[ext]'
-        }
-      }
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "url" loader exclusion list.
     ],
