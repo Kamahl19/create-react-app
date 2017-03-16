@@ -11,8 +11,6 @@ Please refer to its documentation:
 * SASS preprocessor
 * LESS preprocessor
 * decorators
-* babel-plugin-import for Ant.Design
-* allows modifying And.Design less variables
 * @src alias for /src folder
 ```javascript
 import { Button } from '@src/components';
