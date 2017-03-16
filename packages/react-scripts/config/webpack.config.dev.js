@@ -18,6 +18,7 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const getModifyVars = require('./getModifyVars');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -177,7 +178,7 @@ module.exports = {
           babelrc: false,
           presets: [require.resolve('babel-preset-react-app')],
           plugins: [
-            ['import', [{ libraryName: 'antd', style: 'css' }]],
+            ['import', [{ libraryName: 'antd', style: true }]],
             require.resolve('babel-plugin-transform-decorators-legacy'),
           ],
           // @remove-on-eject-end
@@ -275,7 +276,12 @@ module.exports = {
               ],
             },
           },
-          'less-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              modifyVars: getModifyVars(),
+            },
+          },
         ],
       },
       // ** STOP ** Are you adding a new loader?

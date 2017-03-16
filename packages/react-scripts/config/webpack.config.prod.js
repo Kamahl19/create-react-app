@@ -18,6 +18,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const getModifyVars = require('./getModifyVars');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -175,7 +176,7 @@ module.exports = {
           babelrc: false,
           presets: [require.resolve('babel-preset-react-app')],
           plugins: [
-            ['import', [{ libraryName: 'antd', style: 'css' }]],
+            ['import', [{ libraryName: 'antd', style: true }]],
             require.resolve('babel-plugin-transform-decorators-legacy'),
           ],
         },
@@ -295,7 +296,12 @@ module.exports = {
                     ],
                   },
                 },
-                'less-loader',
+                {
+                  loader: 'less-loader',
+                  options: {
+                    modifyVars: getModifyVars(),
+                  },
+                },
               ],
             },
             extractTextPluginOptions
