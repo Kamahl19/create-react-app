@@ -15,3 +15,4 @@ Please refer to its documentation:
 ```javascript
 import { Button } from '@src/components';
 ```
+* webpack-bundle-analyzer to show bundle content as convenient interactive zoomable treemap
