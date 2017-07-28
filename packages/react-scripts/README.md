@@ -11,8 +11,4 @@ Please refer to its documentation:
 * SASS preprocessor
 * LESS preprocessor
 * decorators
-* @src alias for /src folder
-```javascript
-import { Button } from '@src/components';
-```
 * webpack-bundle-analyzer to show bundle content as convenient interactive zoomable treemap
